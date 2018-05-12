@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+
+    bamboo:
+      build: ./bamboo
+      depends_on:
+        - bamboo-database
+      ports:
+        - 8085:8085
+
+    bamboo-database:
+      image: postgres
+      ports:
+        - 5434:5432
+      environment:
+        POSTGRES_USER: "admin"
+        POSTGRES_PASSWORD: "admin"
+        POSTGRES_DB: "bamboo"
+
+    bitbucket:
+      build: ./bitbucket
+      depends_on:
+        - bitbucket-database
+      ports:
+        - 7990:7990
+
+    bitbucket-database:
+      image: postgres
+      ports:
+        - 5433:5432
+      environment:
+        POSTGRES_USER: "admin"
+        POSTGRES_PASSWORD: "admin"
+        POSTGRES_DB: "bitbucket"
