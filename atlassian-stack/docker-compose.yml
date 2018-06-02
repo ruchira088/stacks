@@ -6,6 +6,8 @@ services:
       build: ./bamboo
       depends_on:
         - bamboo-database
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
       ports:
         - 8085:8085
 
@@ -24,6 +26,7 @@ services:
         - bitbucket-database
       ports:
         - 7990:7990
+        - 7999:7999
 
     bitbucket-database:
       image: postgres

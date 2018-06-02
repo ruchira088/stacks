@@ -6,6 +6,8 @@ ENV BITBUCKET_HOME /root/.bitbucket
 
 RUN mkdir /root/.bitbucket
 
+VOLUME /root/.bitbucket
+
 WORKDIR /root/Software
 
 RUN wget https://www.atlassian.com/software/stash/downloads/binary/atlassian-bitbucket-5.10.0.tar.gz && \
